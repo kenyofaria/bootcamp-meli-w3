@@ -1,0 +1,6 @@
+kenyo         m        3000.2
+mauri         m        5000.2
+joice         f        7000.2
+filipe         m        10000.2
+thiago         m        13000.0      650.0
+ana carolina         f        20000.0      5000.0     25000.0

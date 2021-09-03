@@ -11,6 +11,8 @@ public class Aluno {
 	private String senha;
 
 
+	private Situacao situacao;
+	
 	public Aluno() {
 		this.senha = String.valueOf(Long.MAX_VALUE);
 	}
@@ -23,6 +25,13 @@ public class Aluno {
 		this.dataNascimento = dataNascimento;
 	}
 
+	public Aluno(String nome, String sexo, LocalDate dataNascimento, Situacao situacao) {
+		super();
+		this.nome = nome;
+		this.sexo = sexo;
+		this.dataNascimento = dataNascimento;
+		this.situacao = situacao;
+	}
 
 	public String getNome() {
 		return nome;
@@ -76,6 +85,16 @@ public class Aluno {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 	
 }

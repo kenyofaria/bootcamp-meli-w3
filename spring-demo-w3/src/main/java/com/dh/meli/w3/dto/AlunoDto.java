@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.dh.meli.w3.entity.Aluno;
+import com.dh.meli.w3.entity.Situacao;
 
 public class AlunoDto implements Serializable{
 
@@ -15,16 +16,19 @@ public class AlunoDto implements Serializable{
 	private String sexo;
 	private LocalDate dataNascimento;
 	
+	private Situacao situacao;
+	
 	
 	public AlunoDto() {
 	}
 
 
-	public AlunoDto(String nome, String sexo, LocalDate dataNascimento) {
+	public AlunoDto(String nome, String sexo, LocalDate dataNascimento, Situacao situacao) {
 		super();
 		this.nome = nome;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
+		this.setSituacao(situacao);
 	}
 
 
@@ -58,11 +62,21 @@ public class AlunoDto implements Serializable{
 	}
 
 	public Aluno converte() {
-		Aluno aluno = new Aluno(this.nome, this.sexo, this.dataNascimento);
+		Aluno aluno = new Aluno(this.nome, this.sexo, this.dataNascimento, this.situacao);
 		return aluno;
 	}
 	public static AlunoDto converte(Aluno aluno) {
-		AlunoDto alunoDto = new AlunoDto(aluno.getNome(), aluno.getSexo(), aluno.getDataNascimento());
+		AlunoDto alunoDto = new AlunoDto(aluno.getNome(), aluno.getSexo(), aluno.getDataNascimento(), aluno.getSituacao());
 		return alunoDto;
+	}
+
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 }

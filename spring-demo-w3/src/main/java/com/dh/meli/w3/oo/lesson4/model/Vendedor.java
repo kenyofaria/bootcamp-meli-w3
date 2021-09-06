@@ -20,7 +20,6 @@ public class Vendedor extends Funcionario{
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString() + "      " + getComissao() + "     " + getSalario();
 	}
 }

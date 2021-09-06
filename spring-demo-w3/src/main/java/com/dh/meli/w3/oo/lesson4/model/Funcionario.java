@@ -1,4 +1,4 @@
-package com.dh.meli.w3.oo.lesson4;
+package com.dh.meli.w3.oo.lesson4.model;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -15,13 +15,13 @@ public class Funcionario{
 		
 	}
 	
-	public Funcionario(String n, String s, double sal) {
-		nome = n;
-		sexo = s;
+	public Funcionario(String nome, String sexo, double salario) {
+		this.nome = nome;
+		this.sexo = sexo;
 		
 		df.setRoundingMode(RoundingMode.UP);
-		String format = df.format(sal);
-		salario = Double.valueOf(format);
+		String format = df.format(salario);
+		this.salario = Double.valueOf(format);
 	}
 	
 	public double getSalario() {

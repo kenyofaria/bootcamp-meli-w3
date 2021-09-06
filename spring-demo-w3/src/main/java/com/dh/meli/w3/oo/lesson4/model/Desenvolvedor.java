@@ -1,12 +1,12 @@
-package com.dh.meli.w3.oo.lesson4;
+package com.dh.meli.w3.oo.lesson4.model;
 
 public class Desenvolvedor extends Funcionario implements UsuarioAutenticavel{
 
 	private DadosAutenticacao dadosAutenticacao;
 	
-	public Desenvolvedor(String n, String s, double sal, String login, String pass) {
-		super(n,s,sal);
-		dadosAutenticacao = new DadosAutenticacao(login, pass);
+	public Desenvolvedor(String nome, String sexo, double salario, String login, String senha) {
+		super(nome,sexo,salario);
+		dadosAutenticacao = new DadosAutenticacao(login, senha);
 	}
 	
 

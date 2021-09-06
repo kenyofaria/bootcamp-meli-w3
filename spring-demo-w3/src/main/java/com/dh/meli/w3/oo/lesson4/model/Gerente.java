@@ -1,10 +1,10 @@
-package com.dh.meli.w3.oo.lesson4;
+package com.dh.meli.w3.oo.lesson4.model;
 
 public class Gerente extends Funcionario{
 
 	
-	public Gerente(String n, String s, double sal) {
-		super(n,s,sal);
+	public Gerente(String nome, String sexo, double salario) {
+		super(nome,sexo,salario);
 	}
 	
 	public double getGratificacao() {

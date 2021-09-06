@@ -1,4 +1,4 @@
-package com.dh.meli.w3.oo.lesson4;
+package com.dh.meli.w3.oo.lesson4.model;
 
 public class DadosAutenticacao {
 
@@ -7,9 +7,9 @@ public class DadosAutenticacao {
 	private String senha;
 	
 	
-	public DadosAutenticacao(String l, String s) {
-		login = l;
-		senha = s;
+	public DadosAutenticacao(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
 	}
 	
 	public String getLogin() {

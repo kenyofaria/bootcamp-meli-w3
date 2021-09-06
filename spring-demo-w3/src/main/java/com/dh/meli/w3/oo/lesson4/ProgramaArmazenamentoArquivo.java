@@ -10,7 +10,7 @@ import com.dh.meli.w3.oo.lesson4.util.ArquivoUtil;
 
 public class ProgramaArmazenamentoArquivo {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException{
 		Funcionario kenyo = new Funcionario("kenyo", "m", 3000.198);
 		Funcionario mauri = new Funcionario("mauri", "m", 5000.198);
 		Funcionario joice = new Funcionario("joice", "f", 7000.198);

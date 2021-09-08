@@ -2,6 +2,7 @@ package com.dh.meli.w3.oo.lesson6;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 
 public class HashMapExample {
@@ -9,7 +10,7 @@ public class HashMapExample {
 	
 	public static void main(String[] args) {
 	
-		HashMap<String, String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<>();
 		map.put("kenyo", "ciencia da computacao");
 		map.put("joice", "ciencia da computacao");
 		map.put("filipe", "eng. de computacao");
@@ -21,7 +22,7 @@ public class HashMapExample {
 		
 	}
 
-	private static void iterarPorIterator(HashMap<String, String> map) {
+	private static void iterarPorIterator(Map<String, String> map) {
 		System.out.println("\n\n\niterando por iterator");
 		Iterator<Entry<String, String>> iterator = map.entrySet().iterator();
 		while(iterator.hasNext()) {
@@ -29,7 +30,7 @@ public class HashMapExample {
 		}
 	}
 
-	private static void iterarPorForEach(HashMap<String, String> map) {
+	private static void iterarPorForEach(Map<String, String> map) {
 		System.out.println("\n\n\niterando por foreach");
 		for(Entry<String, String> item: map.entrySet()) {
 			System.out.println(item);

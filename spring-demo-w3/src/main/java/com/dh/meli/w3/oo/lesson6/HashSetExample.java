@@ -2,13 +2,14 @@ package com.dh.meli.w3.oo.lesson6;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 public class HashSetExample {
 
 	
 	public static void main(String[] args) {
 	
-		HashSet<String> set = new HashSet<>();
+		Set<String> set = new HashSet<>();
 		set.add("kenyo");
 		set.add("mauri");
 		set.add("filipe");
@@ -19,7 +20,7 @@ public class HashSetExample {
 		
 	}
 
-	private static void iterarPorIterator(HashSet<String> set) {
+	private static void iterarPorIterator(Set<String> set) {
 		System.out.println("\n\n\niterando por iterator");
 		Iterator<String> iterator = set.iterator();
 		while(iterator.hasNext()) {
@@ -27,7 +28,7 @@ public class HashSetExample {
 		}
 	}
 
-	private static void iterarPorForEach(HashSet<String> set) {
+	private static void iterarPorForEach(Set<String> set) {
 		System.out.println("\n\n\niterando por foreach");
 		for(String item: set) {
 			System.out.println(item);

@@ -11,9 +11,7 @@ import com.dh.meli.w3.oo.lesson6.exercicio.model.Cliente;
 
 public class ClienteService {
 	
-	private static List<Cliente> clientes = new ArrayList<>();
-	
-
+	private List<Cliente> clientes = new ArrayList<>();
 	
 	public void adiciona(Cliente cliente) throws ClienteExistenteException, MenorIdadeException{
 		if(clienteCadastrado(cliente)) {
@@ -26,12 +24,16 @@ public class ClienteService {
 	}
 	
 	
-	private static boolean clienteCadastrado(Cliente cliente) {
+	private boolean clienteCadastrado(Cliente cliente) {
 		return clientes.contains(cliente);
 	}
 	
 	private boolean maiorIdade(Cliente cliente) {
 		long qtdeAnos = ChronoUnit.YEARS.between(cliente.getDataNascimento(), LocalDate.now());
 		return (qtdeAnos >= 18);
+	}
+	
+	public List<Cliente> listagem(){
+		return clientes;
 	}
 }

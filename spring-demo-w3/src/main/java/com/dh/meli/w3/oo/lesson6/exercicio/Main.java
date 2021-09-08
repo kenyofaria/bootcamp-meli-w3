@@ -1,12 +1,10 @@
 package com.dh.meli.w3.oo.lesson6.exercicio;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -39,31 +37,6 @@ public class Main {
 				System.out.println(e.getMessage());
 				continue;
 			}
-			
-			
-			try {
-				
-				new FileInputStream("");
-				new Socket().connect(null);
-				//op1
-				//op2
-				//op2
-			}catch(FileNotFoundException e) {
-				//se pretendo programar algo especifico. ex. gerar log
-				//ex. mensagem usuario
-				//ex. envio de email
-			}catch(SocketException e) {
-				//se pretendo programar algo especifico. ex. gerar log
-				//ex. mensagem usuario
-				//ex. envio de email
-			}catch(IOException e) {
-				//se pretendo programar algo especifico. ex. gerar log
-				//ex. mensagem usuario
-				//ex. envio de email
-			}
-			
 		}
 	}
-
-
 }

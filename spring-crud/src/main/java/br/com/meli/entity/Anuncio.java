@@ -10,29 +10,12 @@ public class Anuncio {
 	private BigDecimal preco;
 	private Integer quantidade;
 	private Integer vendidos;
+	private Vendedor vendedor;
 	
-	public Anuncio(Long id, String codigo, String titulo, BigDecimal preco, Integer quantidade, Integer vendidos) {
-		super();
-		this.id = id;
-		this.codigo = codigo;
-		this.titulo = titulo;
-		this.preco = preco;
-		this.quantidade = quantidade;
-		this.vendidos = vendidos;
+	public Anuncio() {
+		
 	}
 	
-	
-
-	public Anuncio(String codigo, String titulo, BigDecimal preco, Integer quantidade) {
-		super();
-		this.codigo = codigo;
-		this.titulo = titulo;
-		this.preco = preco;
-		this.quantidade = quantidade;
-	}
-
-
-
 	public Long getId() {
 		return id;
 	}
@@ -60,4 +43,54 @@ public class Anuncio {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+	
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
+	
+	//interfaces fluentes
+	public Anuncio comId(Long id) {
+		this.id = id;
+		return this;
+	}
+	
+	public Anuncio comCodigo(String codigo) {
+		this.codigo = codigo;
+		return this;
+	}
+	
+	public Anuncio comTitulo(String titulo) {
+		this.titulo = titulo;
+		return this;
+	}
+	
+	public Anuncio comPreco(BigDecimal preco) {
+		this.preco = preco;
+		return this;
+	}
+	
+	public Anuncio comEstoqueDe(Integer estoque) {
+		this.quantidade = estoque;
+		return this;
+	}
+	
+	public Anuncio comQuantidadeVendidaDe(Integer quantidadeVendida) {
+		this.vendidos = quantidadeVendida;
+		return this;
+	}
+
+	public Anuncio doVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+		return this;
+	}
+	
+	public Anuncio build() {
+		return this;
+	}
+	
+	
 }

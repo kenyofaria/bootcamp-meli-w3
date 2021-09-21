@@ -1,10 +1,11 @@
-package br.com.meli.controller;
+package br.com.meli.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import br.com.meli.entity.Anuncio;
+import br.com.meli.persistence.AnuncioPersistence;
 
 @Service
 public class AnuncioService {
@@ -29,6 +30,10 @@ public class AnuncioService {
 		}
 	}
 
+	public Anuncio obter(Long id) {
+		return persistence.obtem(id);	
+	}
+	
 	public List<Anuncio> listagem() {
 		return persistence.listagem();
 	}

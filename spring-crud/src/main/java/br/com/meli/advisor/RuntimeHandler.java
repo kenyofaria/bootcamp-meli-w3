@@ -1,4 +1,4 @@
-package br.com.meli.controller;
+package br.com.meli.advisor;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,4 +16,5 @@ public class RuntimeHandler extends ResponseEntityExceptionHandler {
 		String bodyOfResponse = ex.getMessage();
 		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
+
 }

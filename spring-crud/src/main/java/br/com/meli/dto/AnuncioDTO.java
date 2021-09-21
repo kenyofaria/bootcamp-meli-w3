@@ -12,43 +12,55 @@ public class AnuncioDTO {
 	private String titulo;
 	private BigDecimal preco;
 	private Integer quantidade;
-	
-	public AnuncioDTO(String codigo, String titulo, BigDecimal preco, Integer quantidade) {
+
+	private VendedorDTO vendedor;
+
+	public AnuncioDTO(String codigo, String titulo, BigDecimal preco, Integer quantidade, VendedorDTO vendedor) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.preco = preco;
 		this.quantidade = quantidade;
+		this.vendedor = vendedor;
 	}
+
 	public String getCodigo() {
 		return codigo;
 	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public BigDecimal getPreco() {
 		return preco;
 	}
+
 	public Integer getQuantidade() {
 		return quantidade;
 	}
-	
-	public static Anuncio converte(AnuncioDTO dto) {
-		return new Anuncio().comCodigo(dto.getCodigo())
-		.comTitulo(dto.getTitulo())
-		.comPreco(dto.getPreco())
-		.comQuantidadeVendidaDe(dto.getQuantidade());
+
+	public VendedorDTO getVendedor() {
+		return vendedor;
 	}
-	
-	public static List<AnuncioDTO> converte(List<Anuncio> anuncios){
+
+	public static Anuncio converte(AnuncioDTO dto) {
+		return new Anuncio().comTitulo(dto.getTitulo()).comPreco(dto.getPreco())
+				.comQuantidadeVendidaDe(dto.getQuantidade()
+				.comVen);
+	}
+
+	public static List<AnuncioDTO> converte(List<Anuncio> anuncios) {
 		List<AnuncioDTO> listaDeAnunciosDTO = new ArrayList<>();
-		for(Anuncio anuncio: anuncios) {
-			listaDeAnunciosDTO .add(new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(), anuncio.getQuantidade()));
+		for (Anuncio anuncio : anuncios) {
+			listaDeAnunciosDTO.add(new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(),
+					anuncio.getQuantidade(), VendedorDTO.converte(anuncio.getVendedor())));
 		}
 		return listaDeAnunciosDTO;
 	}
-	
+
 	public static AnuncioDTO converte(Anuncio anuncio) {
-		return new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(), anuncio.getQuantidade());
+		VendedorDTO vendedor = VendedorDTO.converte(anuncio.getVendedor());
+		return new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(), anuncio.getQuantidade(), vendedor);
 	}
 }

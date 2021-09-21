@@ -52,6 +52,10 @@ public class Anuncio {
 		this.vendedor = vendedor;
 	}
 	
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
 	//interfaces fluentes
 	public Anuncio comId(Long id) {
 		this.id = id;

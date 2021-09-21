@@ -1,6 +1,7 @@
 package br.com.meli.service;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class AnuncioService {
 	
 	public void cadastrar(Anuncio anuncio) {
 		if(codigoNaoUtilizado(anuncio.getCodigo())) {
-			anuncio.setId(persistence.listagem().size()+1L);
+			anuncio.setCodigo(String.valueOf("MLB" + ThreadLocalRandom.current().nextInt(100, 999)));
 			persistence.cadastro(anuncio);
 		}else {
 			throw new RuntimeException("Código já utilizado");

@@ -42,7 +42,8 @@ public class AnuncioController {
 	@GetMapping(value = "/{id}")
 	public AnuncioDTO obter(@PathVariable("id") Long id) {
 		Anuncio anuncio = service.obter(id);
-		return AnuncioDTO.converte(anuncio);
+		AnuncioDTO dto = AnuncioDTO.converte(anuncio);
+		return dto;
 	}
 	
 }

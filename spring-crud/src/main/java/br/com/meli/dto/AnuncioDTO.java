@@ -46,8 +46,8 @@ public class AnuncioDTO {
 
 	public static Anuncio converte(AnuncioDTO dto) {
 		return new Anuncio().comTitulo(dto.getTitulo()).comPreco(dto.getPreco())
-				.comQuantidadeVendidaDe(dto.getQuantidade()
-				.comVen);
+				.comQuantidadeVendidaDe(dto.getQuantidade())
+				.doVendedor(VendedorDTO.converte(dto.getVendedor()));
 	}
 
 	public static List<AnuncioDTO> converte(List<Anuncio> anuncios) {

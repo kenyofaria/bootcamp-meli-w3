@@ -29,7 +29,7 @@ public class AnuncioController {
 		Anuncio anuncio = AnuncioDTO.converte(objetoDesserializado);
 		service.cadastrar(anuncio);
 		URI uri = uriBuilder.path("/anuncios/{id}").buildAndExpand(anuncio.getId()).toUri();
-		return ResponseEntity.created(uri).body(objetoDesserializado);
+		return ResponseEntity.created(uri).body(AnuncioDTO.converte(anuncio));
 	}
 	
 	@GetMapping(value = "/list")

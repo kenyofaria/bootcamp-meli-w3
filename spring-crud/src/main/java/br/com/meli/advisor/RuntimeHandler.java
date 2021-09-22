@@ -17,4 +17,10 @@ public class RuntimeHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 
+	
+	@ExceptionHandler(value = ArithmeticException.class)
+	protected ResponseEntity<Object> handleArithmetic(ArithmeticException ex, WebRequest request) {
+		String bodyOfResponse = ex.getMessage();
+		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
 }

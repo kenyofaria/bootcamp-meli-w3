@@ -20,7 +20,6 @@ public class Vendedor {
 	}
 	public Vendedor(String cpf, String nome, String cidade, String uf) {
 		super();
-		this.codigo = codigo;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.cidade = cidade;
@@ -42,6 +41,8 @@ public class Vendedor {
 	public String getNome() {
 		return nome;
 	}
-	
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	
 }

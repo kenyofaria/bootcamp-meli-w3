@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.springframework.stereotype.Service;
 
 import br.com.meli.entity.Anuncio;
+import br.com.meli.exception.ServiceException;
 import br.com.meli.persistence.AnuncioPersistence;
 
 @Service
@@ -24,7 +25,7 @@ public class AnuncioService {
 			anuncio.setCodigo(String.valueOf("MLB" + ThreadLocalRandom.current().nextInt(100, 999)));
 			persistence.cadastro(anuncio);
 		}else {
-			throw new RuntimeException("Código já utilizado");
+			throw new ServiceException("Código já utilizado");
 		}
 	}
 

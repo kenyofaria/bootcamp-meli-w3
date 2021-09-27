@@ -13,7 +13,7 @@ public class Anuncio {
 	private Vendedor vendedor;
 	
 	public Anuncio() {
-		
+		//auto generated
 	}
 	
 	public Long getId() {

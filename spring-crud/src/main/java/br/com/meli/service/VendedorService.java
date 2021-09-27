@@ -3,6 +3,7 @@ package br.com.meli.service;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
@@ -18,14 +19,8 @@ public class VendedorService {
 	
 	
 	private boolean cpfNaoUtilizado(String cpf) {
-	
-		for(Vendedor vendedor: persistence.listagem()) {
-			if(vendedor.getCpf().equals(cpf)) {
-				return false;
-			}
-		}
-		
-		return true;
+		Optional<Vendedor> vendedor = persistence.listagem().stream().filter(v -> v.getCpf().equals(cpf)).findAny();
+		return vendedor.isPresent();
 	}
 	
 	
@@ -56,7 +51,6 @@ public class VendedorService {
 		try {
 			persistence.cadastro(vendedores);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException("erro ao persistir os vendedores");
 		}

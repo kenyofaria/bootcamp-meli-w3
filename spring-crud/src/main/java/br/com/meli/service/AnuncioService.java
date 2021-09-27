@@ -1,6 +1,7 @@
 package br.com.meli.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Service;
@@ -14,12 +15,8 @@ public class AnuncioService {
 	private AnuncioPersistence persistence = new AnuncioPersistence();
 	
 	private boolean codigoNaoUtilizado(String codigo) {
-		for(Anuncio anuncio: persistence.listagem()) {
-			if(anuncio.getCodigo().equals(codigo)) {
-				return false;
-			}
-		}
-		return true;
+		Optional<Anuncio> anuncio = persistence.listagem().stream().filter(a -> a.getCodigo().equalsIgnoreCase(codigo)).findAny();
+		return anuncio.isPresent();
 	}
 	
 	public void cadastrar(Anuncio anuncio) {

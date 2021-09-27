@@ -23,10 +23,7 @@ public class AnuncioPersistence {
 
 	public Anuncio obtem(Long id) {
 		Optional<Anuncio> optionalAnuncio = anuncios.stream().filter(a -> a.getId().equals(id)).findFirst();
-		if (optionalAnuncio.isPresent()) {
-			return optionalAnuncio.get();
-		} else
-			return null;
+		return optionalAnuncio.orElseThrow(()-> new RuntimeException("anuncio inexistente"));
 	}
 
 }

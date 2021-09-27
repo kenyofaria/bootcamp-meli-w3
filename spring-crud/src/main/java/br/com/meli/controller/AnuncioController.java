@@ -22,7 +22,7 @@ import br.com.meli.service.AnuncioService;
 public class AnuncioController {
 
 	@Autowired
-	private AnuncioService service; //new AnuncioService()
+	private AnuncioService service;
 	
 	@PostMapping(value = "/cadastra")
 	public ResponseEntity<AnuncioDTO> cadastro(@RequestBody AnuncioDTO objetoDesserializado, UriComponentsBuilder uriBuilder) {
@@ -35,15 +35,13 @@ public class AnuncioController {
 	@GetMapping(value = "/list")
 	public List<AnuncioDTO> lista(){
 		List<Anuncio> listaDeAnuncios = service.listagem();
-		List<AnuncioDTO> listaDeDTOs = AnuncioDTO.converte(listaDeAnuncios);
-		return listaDeDTOs;
+		return AnuncioDTO.converte(listaDeAnuncios);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public AnuncioDTO obter(@PathVariable("id") Long id) {
 		Anuncio anuncio = service.obter(id);
-		AnuncioDTO dto = AnuncioDTO.converte(anuncio);
-		return dto;
+		return AnuncioDTO.converte(anuncio);
 	}
 	
 }

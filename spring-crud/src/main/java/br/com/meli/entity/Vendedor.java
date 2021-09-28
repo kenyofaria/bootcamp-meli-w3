@@ -1,5 +1,6 @@
 package br.com.meli.entity;
 
+import java.time.LocalDate;
 
 public class Vendedor {
 
@@ -8,6 +9,7 @@ public class Vendedor {
 	private String nome;
 	private String cidade;
 	private String uf;
+	private LocalDate dataNascimento;
 	
 	
 	public Vendedor(String codigo, String cpf, String nome, String cidade, String uf) {
@@ -24,6 +26,15 @@ public class Vendedor {
 		this.nome = nome;
 		this.cidade = cidade;
 		this.uf = uf;
+	}
+	
+	public Vendedor(String cpf, String nome, String cidade, String uf, LocalDate dataNascimento) {
+		super();
+		this.cpf = cpf;
+		this.nome = nome;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.dataNascimento = dataNascimento;
 	}
 	
 	public String getCpf() {
@@ -44,5 +55,11 @@ public class Vendedor {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	
+	@Override
+	public boolean equals(Object obj) {
+		return this.cpf.equals(((Vendedor) obj).getCpf());
+	}
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
 }

@@ -25,7 +25,7 @@ public class VendedorPersistence {
 
 	private File arquivo = new File("vendedores.txt");
 
-	public void cadastro(Vendedor vendedor, boolean manter) throws IOException {
+	public Vendedor cadastro(Vendedor vendedor, boolean manter) throws IOException {
 		String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getCidade()+ ";" + vendedor.getUf();
 		
 		try(FileOutputStream fos = new FileOutputStream(arquivo, manter);
@@ -35,6 +35,7 @@ public class VendedorPersistence {
 			bw.append(registro);
 			bw.newLine();
 		}
+		return vendedor;
 	}
 	
 	public void cadastro(List<Vendedor> vendedores) throws IOException {

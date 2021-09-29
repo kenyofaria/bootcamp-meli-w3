@@ -23,7 +23,14 @@ import br.com.meli.exception.PersistenceException;
  */
 public class VendedorPersistence {
 
-	private File arquivo = new File("vendedores.txt");
+	private File arquivo;// = new File("vendedores.txt");
+	
+	public VendedorPersistence(File arquivo){
+		this.arquivo = arquivo;
+	}
+	
+	public VendedorPersistence(){
+	}
 
 	public Vendedor cadastro(Vendedor vendedor, boolean manter) throws IOException {
 		String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getCidade()+ ";" + vendedor.getUf();

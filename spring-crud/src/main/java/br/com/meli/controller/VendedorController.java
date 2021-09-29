@@ -27,6 +27,7 @@ public class VendedorController {
 	@PostMapping(value = "/cadastra")
 	public ResponseEntity<VendedorDTO> cadastro(@RequestBody VendedorDTO payLoad,  UriComponentsBuilder uriBuilder){
 		Vendedor vendedor = VendedorDTO.converte(payLoad);
+		
 		vendedorService.cadastrar(vendedor);
 		URI uri = uriBuilder.path("/vendedores/{codigo}").buildAndExpand(vendedor.getCodigo()).toUri();
 		VendedorDTO dto = VendedorDTO.converte(vendedor);

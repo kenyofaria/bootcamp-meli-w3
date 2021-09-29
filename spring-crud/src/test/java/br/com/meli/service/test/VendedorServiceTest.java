@@ -29,7 +29,7 @@ class VendedorServiceTest {
 		.thenReturn(lista);
 		
 		VendedorService vendedorService = new VendedorService(mock);                  			
-		vendedorService.cadastrar(vendedor);    												
+		vendedorService.cadastrar(vendedor);    
 		assertNotNull(vendedor.getCodigo());
 	}
 	

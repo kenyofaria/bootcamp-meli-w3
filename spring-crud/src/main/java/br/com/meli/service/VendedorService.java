@@ -1,8 +1,7 @@
 package br.com.meli.service;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -12,14 +11,20 @@ import org.springframework.stereotype.Service;
 
 import br.com.meli.entity.Vendedor;
 import br.com.meli.persistence.VendedorPersistence;
-
+@SuppressWarnings("rawtypes")
 @Service
 public class VendedorService {
 
 	private VendedorPersistence persistence;
 
+	
+	private List<Validador> validadores = new ArrayList<Validador>();
+	
 	public VendedorService(VendedorPersistence persistence) {
 		this.persistence = persistence;
+		validadores.add(new DataNascimentoValidator());
+		validadores.add(new CpfValidator());
+		
 	}
 	
 	private boolean cpfUtilizado(String cpf) {
@@ -31,8 +36,10 @@ public class VendedorService {
 
 	public void cadastrar(Vendedor vendedor) {
 		if (!cpfUtilizado(vendedor.getCpf())) {
-			if(!maiorIdade(vendedor))
-				throw new RuntimeException("Vendedor menor de idade");
+			
+			validadores.forEach(validador ->{
+				validador.valida(vendedor);
+			});
 			try {
 				vendedor.setCodigo(String.valueOf("MLB" + ThreadLocalRandom.current().nextInt(1000, 9999)));
 				persistence.cadastro(vendedor, true);
@@ -44,10 +51,7 @@ public class VendedorService {
 		}
 	}
 	
-	private boolean maiorIdade(Vendedor vendedor) {
-		int years = Period.between(vendedor.getDataNascimento(), LocalDate.now()).getYears();
-		return years>=18;
-	}
+
 
 	public List<Vendedor> listar() {
 		return persistence.listagem();

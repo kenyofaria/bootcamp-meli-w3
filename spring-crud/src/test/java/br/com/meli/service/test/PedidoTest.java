@@ -23,8 +23,22 @@ public class PedidoTest {
 		pedido.adicionaItem(new ItemPedido("Luva de boxe", new BigDecimal(100)));
 		
 		assertEquals(new BigDecimal(100), pedido.getTotal());
-		
 	}
+	
+
+	@Test
+	public void deveExistirItemNaListaDeItensAposAdicionado() {
+
+		Pedido pedido = new Pedido("112345678", LocalDate.now());
+		pedido.adicionaItem(new ItemPedido("Luva de boxe", new BigDecimal(100)));
+		pedido.adicionaItem(new ItemPedido("Toalha de silicone", new BigDecimal(90)));
+		pedido.adicionaItem(new ItemPedido("Bota", new BigDecimal(120)));
+		
+		assertEquals(3, pedido.getItens().size());
+		assertEquals("Luva de boxe", pedido.getItens().get(1).getDescricao());	
+		assertEquals("Bota", pedido.getItens().get(0).getDescricao());	
+	}
+	
 	
 	@Test
 	public void deveAdicionarItensAoPedidoQuandoCincoItens() {
@@ -94,6 +108,8 @@ public class PedidoTest {
 	    String actualMessage = exception.getMessage();
 
 	    assertTrue(actualMessage.contains(expectedMessage));
+	    
+	    
 	}
 	
 }

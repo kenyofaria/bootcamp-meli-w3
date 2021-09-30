@@ -50,6 +50,7 @@ public class Pedido {
 		return total;
 	}
 	public List<ItemPedido> getItens() {
+		itens.sort((ItemPedido a, ItemPedido b) -> a.getDescricao().compareTo(b.getDescricao()));
 		return itens;
 	}
 	public String getStatus() {

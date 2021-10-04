@@ -12,6 +12,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.meli.entity.Vendedor;
 import br.com.meli.exception.PersistenceException;
 
@@ -21,6 +23,7 @@ import br.com.meli.exception.PersistenceException;
  * esta implementacao nao obedece o minimo de boas praticas. contendo uma serie de duplicacoes de codigo e nao utilizando apis prontas.
  * aqueles que forem utilizar este codigo, pfv refatore-o
  */
+@Repository
 public class VendedorPersistence {
 
 	private File arquivo;// = new File("vendedores.txt");

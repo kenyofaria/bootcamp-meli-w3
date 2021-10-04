@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.meli.entity.Anuncio;
 
 //classe especializada em realizar persistencia de anuncios
 
+@Repository
 public class AnuncioPersistence {
 
 	private static List<Anuncio> anuncios = new ArrayList<>();

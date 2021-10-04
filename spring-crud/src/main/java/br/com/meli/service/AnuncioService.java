@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.meli.entity.Anuncio;
@@ -13,7 +14,8 @@ import br.com.meli.persistence.AnuncioPersistence;
 @Service
 public class AnuncioService {
 
-	private AnuncioPersistence persistence = new AnuncioPersistence();
+	@Autowired
+	private AnuncioPersistence persistence;// = new AnuncioPersistence();
 	
 	private boolean codigoNaoUtilizado(String codigo) {
 		Optional<Anuncio> anuncio = persistence.listagem().stream().filter(a -> a.getCodigo().equalsIgnoreCase(codigo)).findAny();

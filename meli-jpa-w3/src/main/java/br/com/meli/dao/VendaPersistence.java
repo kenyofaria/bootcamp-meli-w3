@@ -7,7 +7,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.meli.entity.FormaPagamento;
 import br.com.meli.entity.Venda;
+import br.com.meli.entity.Vendedor;
 import br.com.meli.util.JPAUtil;
 
 public class VendaPersistence {
@@ -40,7 +42,7 @@ public class VendaPersistence {
 	public void atualiza(Venda venda) {
 		em.getTransaction().begin();
 		Venda vendaParaSerAtualizada = em.find(Venda.class, venda.getId());
-		vendaParaSerAtualizada.setFormaPagamento("A PRAZO");
+		vendaParaSerAtualizada.setFormaPagamento(venda.getFormaPagamento());
 		em.getTransaction().commit();
 	}
 	
@@ -53,6 +55,10 @@ public class VendaPersistence {
 
 	public static void main(String[] args) {
 		VendaPersistence vendaPersistence = new VendaPersistence();
+		VendedorPersistence vendedorPersistence = new VendedorPersistence();
+		Vendedor vendedor = vendedorPersistence.get("MLB126");
+		
+		vendaPersistence.insere(new Venda(LocalDate.now(), new BigDecimal(1000), FormaPagamento.A_PRAZO, vendedor));
 		
 //		vendaPersistence.insere(new Venda(LocalDate.now(), new BigDecimal(1000), "A VISTA"));
 //		List<Venda> lista = vendaPersistence.lista();

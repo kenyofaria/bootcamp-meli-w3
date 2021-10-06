@@ -30,11 +30,9 @@ public class VendedorService {
 			if(vendedorExistente == null){
 				throw new RuntimeException("Algo de muito errado aconteceu");
 			}
-			vendedorExistente.setCidade(vendedor.getCidade());
 			vendedorExistente.setCpf(vendedor.getCpf());
-			vendedorExistente.setEndereco(vendedor.getEndereco());
 			vendedorExistente.setNome(vendedor.getNome());
-			vendedorExistente.setUf(vendedor.getUf());
+			vendedorExistente.setEnderecos(vendedor.getEnderecos());
 			vendedorPersistence.atualiza(vendedorExistente);
 		}
 	}

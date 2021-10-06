@@ -1,54 +1,65 @@
 package br.com.meli.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "vendedores")
 public class Vendedor {
 
-	
-	String codigo;
-	String cpf;
-	String nome;
-	String endereco;
-	String uf;
-	String cidade;
-	
-	
-	
-	
-	public Vendedor(String codigo, String cpf, String nome, String endereco, String uf, String cidade) {
+	@Id
+	private String codigo;
+	private String cpf;
+	private String nome;
+	@OneToMany(mappedBy = "vendedor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Endereco> enderecos;
+
+	public Vendedor() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Vendedor(String codigo, String cpf, String nome, List<Endereco> enderecos) {
 		super();
 		this.codigo = codigo;
 		this.cpf = cpf;
 		this.nome = nome;
-		this.endereco = endereco;
-		this.uf = uf;
-		this.cidade = cidade;
+		this.enderecos = enderecos;
 	}
 	
-	public Vendedor(String cpf, String nome, String endereco, String uf, String cidade) {
+	public Vendedor(String codigo, String cpf, String nome) {
+		super();
+		this.codigo = codigo;
+		this.cpf = cpf;
+		this.nome = nome;
+	}
+
+	public Vendedor(String cpf, String nome, List<Endereco> enderecos) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
-		this.endereco = endereco;
-		this.uf = uf;
-		this.cidade = cidade;
+		this.enderecos = enderecos;
 	}
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public String getNome() {
 		return nome;
 	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public String getUf() {
-		return uf;
-	}
-	public String getCidade() {
-		return cidade;
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
 	public void setCodigo(String codigo) {
@@ -63,21 +74,14 @@ public class Vendedor {
 		this.nome = nome;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	
 	@Override
-	public String toString() {		
-		return this.codigo.concat(" -- " + this.nome).concat(" -- " + this.cpf).concat(" -- " + this.endereco).concat(" -- " + this.uf).concat(" -- " + this.cidade);
+	public String toString() {
+		return this.codigo.concat(" -- " + this.nome).concat(" -- " + this.cpf);
 	}
-	
+
 }

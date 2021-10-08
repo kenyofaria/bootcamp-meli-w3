@@ -13,9 +13,11 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@ManyToOne
 	@JoinColumn(name = "vendedor_codigo")
 	private Vendedor vendedor;
+	
 	private String cep;
 	private String logradouro;
 	private String complemento;
@@ -59,7 +61,6 @@ public class Endereco {
 		this.numero = numero;
 		this.uf = uf;
 		this.cidade = cidade;
-		this.vendedor = vendedor;
 	}
 
 	public Endereco(String cep, String logradouro, String complemento, int numero, String uf, String cidade) {
@@ -70,7 +71,6 @@ public class Endereco {
 		this.numero = numero;
 		this.uf = uf;
 		this.cidade = cidade;
-		this.vendedor = vendedor;
 	}
 	
 	

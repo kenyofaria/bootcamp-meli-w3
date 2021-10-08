@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.meli.entity.Endereco;
+import br.com.meli.entity.SituacaoVendedor;
 import br.com.meli.entity.Vendedor;
 import br.com.meli.util.JPAUtil;
 
@@ -50,6 +51,23 @@ public class VendedorPersistence {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public void atualizaSituacaoVendedoresEmLote() {
+		em.getTransaction().begin();
+		
+		List<Vendedor> vendedores = lista();
+		vendedores.forEach(v -> {
+			v.setSituacao(SituacaoVendedor.INATIVO);
+			em.merge(v);
+		});
+		
+		em.getTransaction().commit();
+	}
+	
+	public static void main(String[] args) {
+		new VendedorPersistence().atualizaSituacaoVendedoresEmLote();
 	}
 
 }

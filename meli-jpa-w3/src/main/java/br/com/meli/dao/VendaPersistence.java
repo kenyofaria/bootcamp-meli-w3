@@ -54,23 +54,7 @@ public class VendaPersistence {
 	}
 
 	public static void main(String[] args) {
-		VendaPersistence vendaPersistence = new VendaPersistence();
-		VendedorPersistence vendedorPersistence = new VendedorPersistence();
-		Vendedor vendedor = vendedorPersistence.get("MLB126");
-		
-		vendaPersistence.insere(new Venda(LocalDate.now(), new BigDecimal(1000), FormaPagamento.A_PRAZO, vendedor));
-		
-//		vendaPersistence.insere(new Venda(LocalDate.now(), new BigDecimal(1000), "A VISTA"));
-//		List<Venda> lista = vendaPersistence.lista();
-//		lista.forEach(v -> System.out.println(v.getData().toString().concat("  " + v.getValorTotal())));
-		
-//		Venda v = vendaPersistence.get(2L);
-//		System.out.println(v.getData().toString().concat("  " + v.getValorTotal()));
-		
-//		Venda venda = new Venda(2L, LocalDate.now(), new BigDecimal(1000), "A PRAZO");
-//		vendaPersistence.atualiza(venda);
-		
-//		vendaPersistence.deleta(2L);
+
 		
 	}
 }

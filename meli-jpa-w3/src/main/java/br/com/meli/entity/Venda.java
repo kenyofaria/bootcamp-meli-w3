@@ -46,6 +46,7 @@ public class Venda {
 		this.vendedor = vendedor;
 	}
 	
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,5 +77,5 @@ public class Venda {
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
-	
+
 }

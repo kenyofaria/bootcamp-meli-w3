@@ -34,6 +34,7 @@ public class VendedorService {
 		return vendedor.isPresent();
 	}
 
+	@SuppressWarnings("unchecked")
 	public void cadastrar(Vendedor vendedor) {
 		if (!cpfUtilizado(vendedor.getCpf())) {
 			

@@ -3,6 +3,8 @@ package br.com.meli.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class AnuncioController {
 	private AnuncioService service;
 	
 	@PostMapping(value = "/cadastra")
-	public ResponseEntity<AnuncioDTO> cadastro(@RequestBody AnuncioDTO objetoDesserializado, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<AnuncioDTO> cadastro(@Valid @RequestBody AnuncioDTO objetoDesserializado, UriComponentsBuilder uriBuilder) {
 		Anuncio anuncio = AnuncioDTO.converte(objetoDesserializado);
 		service.cadastrar(anuncio);
 		URI uri = uriBuilder.path("/anuncios/{id}").buildAndExpand(anuncio.getId()).toUri();

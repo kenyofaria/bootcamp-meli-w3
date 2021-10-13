@@ -17,9 +17,18 @@ public class AnuncioService {
 	@Autowired
 	private AnuncioPersistence persistence;// = new AnuncioPersistence();
 	
+	
+	public AnuncioService(AnuncioPersistence persistence) {
+		this.persistence = persistence;
+	}
+	
+	public AnuncioService() {
+		this.persistence = new AnuncioPersistence();
+	}
+	
 	private boolean codigoNaoUtilizado(String codigo) {
 		Optional<Anuncio> anuncio = persistence.listagem().stream().filter(a -> a.getCodigo().equalsIgnoreCase(codigo)).findAny();
-		return anuncio.isPresent();
+		return !anuncio.isPresent();
 	}
 	
 	public void cadastrar(Anuncio anuncio) {

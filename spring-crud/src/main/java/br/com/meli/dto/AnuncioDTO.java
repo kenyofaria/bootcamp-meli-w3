@@ -18,13 +18,13 @@ import br.com.meli.entity.Anuncio;
 public class AnuncioDTO {
 
 	private String codigo;
-	@NotNull(message = "campo título é obrigatorio")
-	@NotEmpty(message = "campo título é obrigatorio")
-	@NotBlank(message = "campo título é obrigatorio")
+	@NotNull
+	@NotEmpty
+	@NotBlank
 	@Length(min=3)
 	private String titulo;
-	@NotNull(message = "campo preco é obrigatorio")
-	@Min(value = 1, message = "preco deve ser maior ou igual a R$ 1")
+	@NotNull
+	@Min(value = 1)
 	private BigDecimal preco;
 	private Integer quantidade;
 
@@ -88,8 +88,13 @@ public class AnuncioDTO {
 	public static List<AnuncioDTO> converte(List<Anuncio> anuncios) {
 		List<AnuncioDTO> listaDeAnunciosDTO = new ArrayList<>();
 		for (Anuncio anuncio : anuncios) {
-			listaDeAnunciosDTO.add(new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(),
-					anuncio.getQuantidade(), VendedorDTO.converte(anuncio.getVendedor())));
+			if(anuncio.getVendedor()!=null) {
+				listaDeAnunciosDTO.add(new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(),
+						anuncio.getQuantidade(), VendedorDTO.converte(anuncio.getVendedor())));
+			}else {
+				listaDeAnunciosDTO.add(new AnuncioDTO(anuncio.getCodigo(), anuncio.getTitulo(), anuncio.getPreco(),
+						anuncio.getQuantidade()));
+			}
 		}
 		return listaDeAnunciosDTO;
 	}

@@ -21,7 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/anuncios").permitAll()
 			.anyRequest().authenticated()
 		.and()
-			.httpBasic();
+			//.httpBasic();
+		.formLogin();
 	}
 	
 	@Bean

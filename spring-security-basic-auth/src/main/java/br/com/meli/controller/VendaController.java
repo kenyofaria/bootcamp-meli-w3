@@ -16,7 +16,7 @@ import br.com.meli.entity.Venda;
 @RequestMapping("/vendas")
 public class VendaController {
 
-	@GetMapping("vendas")
+	@GetMapping
 	public ResponseEntity<List<Venda>> listaDeVendas() {
 		List<Venda> vendas = Arrays.asList(
 				new Venda(LocalDate.parse("2021-01-10"), "MLB876", "MLB098", new BigDecimal(40)),

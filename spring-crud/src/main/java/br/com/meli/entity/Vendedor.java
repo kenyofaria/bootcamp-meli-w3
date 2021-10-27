@@ -7,44 +7,46 @@ public class Vendedor {
 	private String codigo;
 	private String cpf;
 	private String nome;
-	private String cidade;
-	private String uf;
 	private LocalDate dataNascimento;
 	
+	private Endereco endereco;
 	
-	public Vendedor(String codigo, String cpf, String nome, String cidade, String uf) {
+	
+	public Vendedor(String codigo, String cpf, String nome) {
 		super();
 		this.codigo = codigo;
 		this.cpf = cpf;
 		this.nome = nome;
-		this.cidade = cidade;
-		this.uf = uf;
 	}
-	public Vendedor(String cpf, String nome, String cidade, String uf) {
+	public Vendedor(String codigo, String cpf, String nome, Endereco endereco) {
+		super();
+		this.codigo = codigo;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.endereco = endereco;
+	}
+	public Vendedor(String cpf, String nome) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
-		this.cidade = cidade;
-		this.uf = uf;
+
 	}
 	
-	public Vendedor(String cpf, String nome, String cidade, String uf, LocalDate dataNascimento) {
+	public Vendedor(String cpf, String nome, LocalDate dataNascimento) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
-		this.cidade = cidade;
-		this.uf = uf;
 		this.dataNascimento = dataNascimento;
 	}
 	
+	public Vendedor(String cpf, String nome, Endereco endereco) {
+		super();
+		this.cpf = cpf;
+		this.nome = nome;
+		this.endereco = endereco;
+	}
 	public String getCpf() {
 		return cpf;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public String getUf() {
-		return uf;
 	}
 	public String getCodigo() {
 		return codigo;
@@ -62,4 +64,20 @@ public class Vendedor {
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
 }

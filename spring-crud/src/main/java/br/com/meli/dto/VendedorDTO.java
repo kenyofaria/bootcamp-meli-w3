@@ -1,5 +1,6 @@
 package br.com.meli.dto;
 
+import br.com.meli.entity.Endereco;
 import br.com.meli.entity.Vendedor;
 
 public class VendedorDTO {
@@ -34,10 +35,11 @@ public class VendedorDTO {
 	}
 	
 	public static VendedorDTO converte(Vendedor vendedor) {
-		return new VendedorDTO(vendedor.getCpf(), vendedor.getNome(), vendedor.getCidade(), vendedor.getUf());
+		return new VendedorDTO(vendedor.getCpf(), vendedor.getNome(), vendedor.getEndereco().getCidade(), vendedor.getEndereco().getUf());
 	}
 	
 	public static Vendedor converte(VendedorDTO vendedor) {
-		return new Vendedor(vendedor.getCpf(), vendedor.getNome(), vendedor.getCidade(), vendedor.getUf());
+		Endereco endereco = new Endereco(vendedor.getUf(), vendedor.getCidade());
+		return new Vendedor(vendedor.getCpf(), vendedor.getNome(), endereco);
 	}
 }

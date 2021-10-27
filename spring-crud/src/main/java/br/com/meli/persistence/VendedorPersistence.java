@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.meli.entity.Endereco;
 import br.com.meli.entity.Vendedor;
 import br.com.meli.exception.PersistenceException;
 
@@ -36,7 +37,7 @@ public class VendedorPersistence {
 	}
 
 	public Vendedor cadastro(Vendedor vendedor, boolean manter) throws IOException {
-		String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getCidade()+ ";" + vendedor.getUf();
+		String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getEndereco().getCidade()+ ";" + vendedor.getEndereco().getUf();
 		
 		try(FileOutputStream fos = new FileOutputStream(arquivo, manter);
 				OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -62,7 +63,7 @@ public class VendedorPersistence {
 			BufferedWriter bw = new BufferedWriter(osw)
 			){
 			for (Vendedor vendedor : vendedores) {
-				String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getCidade()+ ";" + vendedor.getUf();
+				String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getEndereco().getCidade()+ ";" + vendedor.getEndereco().getUf();
 				bw.append(registro);
 				bw.newLine();
 			}
@@ -89,7 +90,9 @@ public class VendedorPersistence {
 	 */
 	private Vendedor converte(String registro) {
 		String[] campos = registro.split(";");
-		return new Vendedor(campos[0], campos[1], campos[2], campos[3], campos[4]);
+		return new Vendedor(campos[0], campos[1], campos[2], new Endereco(campos[3], campos[4]));
+		
+		//String registro = vendedor.getCodigo() + ";" + vendedor.getCpf() + ";" + vendedor.getNome() + ";" + vendedor.getEndereco().getCidade()+ ";" + vendedor.getEndereco().getUf();
 	}
 	
 	private List<String> retornaRegistros() {

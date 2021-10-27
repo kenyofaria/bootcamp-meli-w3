@@ -1,0 +1,6 @@
+create table ...
+
+
+
+
+insert into ...

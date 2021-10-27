@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.meli.entity.Venda;
 
+
 @RestController
 @RequestMapping("/vendas")
 public class VendaController {
